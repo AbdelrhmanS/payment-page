@@ -1,0 +1,42 @@
+<section class="text-center">
+	<div class="container">
+		<div class="row">
+			<form name="paymentForm" ng-submit="submitForm(paymentForm)">
+				<div class="form-group col-md-6" >
+					<label>Card number :</label>
+					<input type="text" ng-model="user.cardnumber" payments-validate="card" payments-format="card" class="form-control" name="cardnumber" required>
+
+				</div>
+				<div class="form-group col-md-6">
+					<label>Card holder name</label>
+					<input type="text" class="form-control" ng-model="user.username" name="username" ng-minlength="3" ng-maxlength="8" required>
+					<p ng-show="paymentForm.username.$error.minlength" class="help-block">Username is too short.</p>
+  					<p ng-show="paymentForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Card CVV</label>
+					<input type="text" class="form-control"  ng-model="user.cardcvc" payments-validate="cvc" payments-format="cvc" payments-type-model="type" name="cardcvc" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Card Expiration</label>
+					<input type="text" ng-model="user.expiry" payments-validate="expiry" payments-format="expiry" class="form-control" name="expiry" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Email</label>
+					<input type="email" class="form-control" ng-model="user.email" name="email" required>
+					<p ng-show="paymentForm.email.$invalid && !paymentForm.email.$pristine" class="help-block">Enter a valid email.</p>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Payment amount</label>
+					<input type="number" class="form-control" ng-model="user.amount" ng-maxlength="8" name="paymentamount" required>
+					<p ng-show="paymentForm.paymentamount.$error.maxlength" class="help-block">payment amount is too long.</p>
+
+				</div>
+				<div class="form-group col-md-offset-6 col-md-6">
+					<input type="submit" class="btn btn-primary form-control" name="submit" value="Submit" >
+				</div>
+
+			</form>
+		</div>
+	</div>
+</section>
